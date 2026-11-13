@@ -1,4 +1,4 @@
-# Checkpoint 2
+# Team ALERT · Checkpoint 2
 
 ## What we can show
 
@@ -23,7 +23,7 @@ I’ll handle delivery and acceptance evidence. Esrom will lead Terraform and th
 
 If Lucas or Titas can't meet the agreed handoff, Aman takes Lucas’s work and Esrom takes Titas’s. We’ll update the issue assignee when the work changes hands and link the PR and test results so it’s clear who did what. If Lucas or Titas contributes before the other is available to review, ask Aman or Esrom to review the change. Each of us should leave at least one technical review on someone else’s work.
 
-We’ll work from one branch per task. If a change needs the unmerged demo, branch from `checkpoint-2-demo` and open a PR against it for review. Once PR #1 lands, start new work from `main` and open PRs back to `main`. I’ll use the [TO DO board](https://github.com/users/qbaman/projects/1/views/1) to track what’s started, waiting for review and done.
+We’ll work from one branch per task. If a change needs the unmerged demo, branch from `checkpoint-2-demo` and open a PR against it for review. Once PR #1 lands, start new work from `main` and open PRs back to `main`. I’ll use the [Team ALERT TO DO board](https://github.com/users/qbaman/projects/1/views/1) to track what’s started, waiting for review and done.
 
 ## What I want to measure for Viva 2
 
