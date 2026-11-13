@@ -31,7 +31,7 @@ jobs:
         shell: bash
         run: |
           status=$(curl --fail --silent --show-error \
-            --retry 5 --retry-connrefused --retry-delay 1 --max-time 5 \
+            --retry 5 --retry-all-errors --retry-delay 1 --max-time 5 \
             --output served-page.html --write-out '%{http_code}' http://127.0.0.1:8080/)
           test "$status" = 200
           grep --fixed-strings --quiet '<h1>Evolving Ltd Service Desk</h1>' served-page.html
