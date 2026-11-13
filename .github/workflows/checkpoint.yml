@@ -1,0 +1,52 @@
+name: Checkpoint demo
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  container-check:
+    name: Build, start and verify the container
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Build the image
+        run: docker build --tag "evolving-demo:${GITHUB_SHA}" .
+
+      - name: Start the test deployment
+        run: docker run --detach --name evolving-demo --publish 127.0.0.1:8080:80 "evolving-demo:${GITHUB_SHA}"
+
+      - name: Check the deployed page
+        shell: bash
+        run: |
+          status=$(curl --fail --silent --show-error \
+            --retry 5 --retry-connrefused --retry-delay 1 --max-time 5 \
+            --output served-page.html --write-out '%{http_code}' http://127.0.0.1:8080/)
+          test "$status" = 200
+          grep --fixed-strings --quiet '<h1>Evolving Ltd Service Desk</h1>' served-page.html
+          printf 'Commit %s served the expected page with HTTP %s.\n' "$GITHUB_SHA" "$status"
+
+      - name: Show server logs on failure
+        if: failure()
+        run: |
+          if docker container inspect evolving-demo >/dev/null 2>&1; then
+            docker logs evolving-demo
+          fi
+
+      - name: Stop the test deployment
+        if: always()
+        run: |
+          if docker container inspect evolving-demo >/dev/null 2>&1; then
+            docker rm --force evolving-demo
+          fi
