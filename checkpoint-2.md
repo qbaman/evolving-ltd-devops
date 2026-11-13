@@ -12,16 +12,18 @@ In the lab, I'll open the PR and walk through the build, container startup and H
 
 The feedback from Viva 1 was to make our tooling clearer. GitHub Actions runs the workflow, Docker packages and runs the page, and we plan to use Terraform to set up the infrastructure. We still need to agree where the service will run after the workflow ends.
 
-Here's the split I'd propose for the team. Esrom led architecture and IaC in Viva 1. Lucas and Titas still need to confirm their tasks.
+I’ll handle delivery and acceptance evidence. Esrom will lead Terraform and the test host. I’ll review Esrom’s PRs, and he’ll review mine, including any work we pick up for the other two.
 
-| Person | Proposed work | Evidence to add |
-| --- | --- | --- |
-| Aman | I'll coordinate delivery, walk through the Actions workflow, and track the acceptance tests. | PR #1 review and the combined test results. |
-| Esrom | Confirm a Linux test host, then write and test the Terraform setup. | Terraform PR and a record of a successful provision. |
-| Lucas | Own the service desk page and extend the checks to cover any new features the team agrees on. | App PR and passing checks tied to it. |
-| Titas | Set up an uptime check and rehearse rolling back to an earlier Docker image. | Monitoring and rollback PR with timestamps from a test. |
+| Work | Primary | Fallback | Reviewer |
+| --- | --- | --- | --- |
+| [Checkpoint walkthrough and acceptance evidence](https://github.com/qbaman/evolving-ltd-devops/issues/2) | Aman | | Esrom |
+| [Test host and Terraform](https://github.com/qbaman/evolving-ltd-devops/issues/3) | Esrom | | Aman |
+| [Service desk and HTTP check](https://github.com/qbaman/evolving-ltd-devops/issues/5) | Lucas | Aman | Titas reviews Lucas if available. Esrom reviews Aman. |
+| [Uptime check and rollback](https://github.com/qbaman/evolving-ltd-devops/issues/4) | Titas | Esrom | Lucas reviews Titas if available. Aman reviews Esrom. |
 
-Once the team agrees the split, we'll each open a PR from a branch named for the task. Work that needs the Docker demo can start from `checkpoint-2-demo` and target that branch until PR #1 merges. After that, new branches start from `main` and PRs go back to `main`. We'll each review someone else's work and add our PRs, reviews and test logs here as we go.
+If Lucas or Titas can't meet the agreed handoff, Aman takes Lucas’s work and Esrom takes Titas’s. We’ll update the issue assignee when the work changes hands and link the PR and test results so it’s clear who did what. If Lucas or Titas contributes before the other is available to review, ask Aman or Esrom to review the change. Each of us should leave at least one technical review on someone else’s work.
+
+We’ll work from one branch per task. If a change needs the unmerged demo, branch from `checkpoint-2-demo` and open a PR against it for review. Once PR #1 lands, start new work from `main` and open PRs back to `main`. I’ll use the [TO DO board](https://github.com/users/qbaman/projects/1/views/1) to track what’s started, waiting for review and done.
 
 ## What I want to measure for Viva 2
 
