@@ -13,7 +13,7 @@ The demo uses a static Evolving Ltd service desk page. GitHub Actions checks out
 | Evidence | Record |
 | --- | --- |
 | Shared repository | [evolving-ltd-devops](https://github.com/qbaman/evolving-ltd-devops) |
-| Automation and initial test | [GitHub Actions runs](https://github.com/qbaman/evolving-ltd-devops/actions). Open the run associated with the demo pull request. |
+| Automation and initial test | [Successful GitHub Actions job](https://github.com/qbaman/evolving-ltd-devops/actions/runs/43489321880/job/132105968860). The job log confirms HTTP 200 and the expected page heading. [Evidence screenshot](checkpoint-2-run-1.jpg). |
 | Contribution record | Add each team member’s name, completed work, evidence link and next task as work is agreed or completed. |
 | Peer review | Link the teammate’s review once it has happened. |
 
