@@ -34,3 +34,7 @@ Open [localhost:8080](http://localhost:8080/) to see the service desk page.
 Use a separate branch for each task and ask a teammate to review your PR. Start from `main` for independent work. If your task needs the unmerged demo, branch from `checkpoint-2-demo` and open your PR against that branch. Once PR #1 merges, start new work from `main` and open PRs back to `main`.
 
 Use a name that describes the task, such as `infra/terraform-test-host` or `ops/uptime-check`. Link your PR and test result in the checkpoint notes so we can show who did what and how it was checked.
+
+## Shared test host
+
+The Actions smoke test uses a temporary runner. For the persistent test environment, see the [Terraform deployment guide](terraform/README.md) and the [monitoring, rollback and evidence runbook](ops/README.md).

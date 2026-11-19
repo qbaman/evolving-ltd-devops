@@ -1,0 +1,19 @@
+[Unit]
+Description=Evolving Ltd service desk uptime monitor
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=evolving-monitor
+EnvironmentFile=/etc/evolving-uptime.env
+ExecStart=/usr/bin/python3 /opt/evolving-ltd/scripts/uptime_monitor.py
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
