@@ -35,7 +35,8 @@ jobs:
             --output served-page.html --write-out '%{http_code}' http://127.0.0.1:8080/)
           test "$status" = 200
           grep --fixed-strings --quiet '<h1>Evolving Ltd Service Desk</h1>' served-page.html
-          printf 'Commit %s served the expected page with HTTP %s.\n' "$GITHUB_SHA" "$status"
+          grep --fixed-strings --quiet '<h2>What to include in a support request</h2>' served-page.html
+          printf 'Commit %s served the expected service desk guidance with HTTP %s.\n' "$GITHUB_SHA" "$status"
 
       - name: Show server logs on failure
         if: failure()
