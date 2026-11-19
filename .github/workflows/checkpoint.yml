@@ -50,3 +50,16 @@ jobs:
           if docker container inspect evolving-demo >/dev/null 2>&1; then
             docker rm --force evolving-demo
           fi
+
+  monitor-check:
+    name: Verify outage notification retry
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Test webhook retry and recovery ordering
+        run: python3 -B -m unittest discover -s scripts
